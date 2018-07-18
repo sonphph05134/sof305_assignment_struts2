@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="index">
+            <result>index.jsp</result>
+        </action>
+
+        <!--<action name="login" class="vn.poly.sof305.sonphph05134.action.Auth" method="execute">-->
+            <!--<result name="success">/login.jsp</result>-->
+        <!--</action>-->
+        <action name="department" class="vn.poly.sof305.sonphph05134.action.Department" method="department">
+            <result name="success">indexDepartment.jsp</result>
+        </action>
+        <action name="employee" class="vn.poly.sof305.sonphph05134.action.Employee" method="employee">
+            <result name="success">indexEmployee.jsp</result>
+        </action>
+        <action name="record" class="vn.poly.sof305.sonphph05134.action.Record" method="execute">
+            <result name="success">indexRecord.jsp</result>
+        </action>
+        <action name="statistic" class="vn.poly.sof305.sonphph05134.action.Statistic" method="statistic">
+            <result name="success">indexStatistic.jsp</result>
+        </action>
+        <action name="homePage" class="vn.poly.sof305.sonphph05134.action.Homepage" method="homepage">
+            <result name="success">homepage.jsp</result>
+        </action>
+    </package>
+    <package name="auth" namespace="/" extends="struts-default">
+        <action name="login" class="vn.poly.sof305.sonphph05134.action.Auth" method="execute">
+            <result name="success">/web/views/auth/login.jsp</result>
+        </action>
+    </package>
+</struts>
