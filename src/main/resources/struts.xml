@@ -4,36 +4,24 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.convention.default.parent.package" value="default"/>
+    <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory"/>
+    <constant name="struts.custom.i18n.resources" value="global" />
 
-    <constant name="struts.devMode" value="true" />
+    <package name="default" extends="struts-default" namespace="/">
+        <interceptors>
+            <interceptor name="authentication" class="vn.poly.sof305.sonphph05134.common.interceptor.AuthenticationInterceptor"/>
+            <interceptor-stack name="authStack">
+                <interceptor-ref name="authentication"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
 
-    <package name="default" namespace="/" extends="struts-default">
-        <action name="index">
-            <result>index.jsp</result>
-        </action>
+        <default-interceptor-ref name="authStack"/>
 
-        <!--<action name="login" class="vn.poly.sof305.sonphph05134.action.Auth" method="execute">-->
-            <!--<result name="success">/login.jsp</result>-->
-        <!--</action>-->
-        <action name="department" class="vn.poly.sof305.sonphph05134.action.Department" method="department">
-            <result name="success">indexDepartment.jsp</result>
-        </action>
-        <action name="employee" class="vn.poly.sof305.sonphph05134.action.Employee" method="employee">
-            <result name="success">indexEmployee.jsp</result>
-        </action>
-        <action name="record" class="vn.poly.sof305.sonphph05134.action.Record" method="execute">
-            <result name="success">indexRecord.jsp</result>
-        </action>
-        <action name="statistic" class="vn.poly.sof305.sonphph05134.action.Statistic" method="statistic">
-            <result name="success">indexStatistic.jsp</result>
-        </action>
-        <action name="homePage" class="vn.poly.sof305.sonphph05134.action.Homepage" method="homepage">
-            <result name="success">homepage.jsp</result>
-        </action>
-    </package>
-    <package name="auth" namespace="/" extends="struts-default">
-        <action name="login" class="vn.poly.sof305.sonphph05134.action.Auth" method="execute">
-            <result name="success">/web/views/auth/login.jsp</result>
-        </action>
+        <global-results>
+            <result name="login" type="redirect">/login</result>
+        </global-results>
     </package>
 </struts>
