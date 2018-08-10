@@ -18,19 +18,19 @@
                 <ul class="nav nav-pills flex-column">
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="<s:url action="homePage"/>" >homepage</a>
+                            <a class="nav-link active" href="<s:url value="/home"/>"> homepage</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="<s:url action="department"/>" >department</a>
+                            <a class="nav-link " href="<s:url value="/department"/>" >department</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<s:url action="employee"/>" >employee</a>
+                            <a class="nav-link" href="<s:url value="/employee"/>" >employee</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="<s:url action="record"/>" >recording</a>
+                            <a class="nav-link " href="<s:url value="/record"/>" >recording</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="<s:url action="statistic"/>" >statistic</a>
+                            <a class="nav-link " href="<s:url value="/statistic"/>" >statistic</a>
                         </li>
                     </ul>
                 </ul>
@@ -46,14 +46,6 @@
                             <br>
                             <h2>homepage.top.label</h2>
                             <div class="">&nbsp;</div>
-
-                            <!-- Begin Top Message -->
-
-                            <!-- End Top Message -->
-
-                            <!-- Begin Search screen -->
-
-                            <!-- End Search screen -->
 
                             <!-- Begin List screen -->
                             <div>

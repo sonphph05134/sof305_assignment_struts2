@@ -5,13 +5,30 @@
   Time: 7:18 PM
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ include file="/WEB-INF/common/common.jsp"%>
-<%@page pageEncoding="UTF-8"%>
+<%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Department</title>
     <%@ include file="/WEB-INF/common/head.jsp"%>
+    <script type="text/javascript">
+        function paging(pageNo){
+            $("#pageNo").val(pageNo);
+            $("#searchForm").submit();
+        }
+        $(function(){
+
+            //Clear search conditional
+            $('#btnClear').click(function(){
+                $("#pageNo").val('');
+                $("#code").val('');
+                $("#name").val('');
+                $("#searchForm").submit();
+            })
+        })
+    </script>
 </head>
 <body>
     <section id="container">
@@ -24,19 +41,19 @@
             <div class="col-md-2" style="background-color: #34495e;">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link " href="#"> homepage</a>
+                        <a class="nav-link " href="<s:url value="/home"/>"> homepage</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#" >department</a>
+                        <a class="nav-link active" href="<s:url value="/department"/>" >department</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<s:url action="employee"/>" >employee</a>
+                        <a class="nav-link" href="<s:url value="/employee"/>" >employee</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#" >recording</a>
+                        <a class="nav-link " href="<s:url value="/record"/>" >recording</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#" >statistic</a>
+                        <a class="nav-link " href="<s:url value="/statistic"/>" >statistic</a>
                     </li>
                 </ul>
             </div>
@@ -50,34 +67,53 @@
                             <div >&nbsp; </div>
                             <h2>departmentIndex.title.label</h2>
                             <div >&nbsp; </div>
-                            <!-- Begin Top Message -->
-
-                            <!-- End Top Message -->
+                            <!-- BEGIN TOP MESSAGE -->
+                            <c:if test="${not empty sessionMessageDto}">
+                                <div>
+                                    <div class="alert alert-success alert-dismissible fade show font-weight-bold" role="alert">
+                                        <spring:message code="${sessionMessageDto.messageCode}"
+                                                        arguments="${sessionMessageDto.messageArgs}"/>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </c:if>
+                            <!-- END TOP MESSAGE -->
                             <div >&nbsp; </div>
                             <!-- Begin Search screen -->
-                            <div>
-                                    <div class="row">
-                                        <div class="form-group col">
-                                            <s:form theme="bootstrap" cssClass="well form-search">
-                                                <s:textfield
-                                                        label="Code"
-                                                        name="name"
-                                                        tooltip="Enter your Code here"/>
-                                                <s:textfield
-                                                        label="Name"
-                                                        name="name"
-                                                        tooltip="Enter your Name here"/>
-                                            </s:form>
-                                        </div>
+                            <!-- BEGIN SEARCH FORM -->
+                            <div class="form-group">&nbsp;</div>
+                            <s:form action="department" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal"
+                                    id="searchForm">
+                                <%--<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: 0.3em;"></span>--%>
+                                <div class="alert alert-heading alert-dismissible fade show font-weight-bold" role="alert">
+                                    <s:if test="hasActionMessages()">
+                                        <s:actionmessage theme="bootstrap"/>
+                                    </s:if>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <s:hidden name="pn" value="%{pn}" id="pageNo"/>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <s:textfield key="code" cssClass="form-control" id="code"/>
                                     </div>
-                                    <button type="submit" class="btn btn-primary" id="btnSearch">Search
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button type="reset" class="btn btn-warning" id="btnClear">Clear
-                                        <i class="fas fa-eraser"></i>
-                                    </button>
-                            </div>
-                            <!-- End Search screen -->
+                                    <div class="form-group col-md-6">
+                                        <s:textfield key="name" cssClass="form-control" id="name"/>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="btnSearch"><i class="fas fa-search"></i><s:text
+                                        name="department.list.search.button.search"/></button>
+                                <%--   <s:submit key="button.search" value="Search" cssClass="btn btn-outline-primary"/>--%>
+                                <button type="submit" class="btn btn-warning" id="btnClear"><i class="fas fa-eraser"></i><s:text
+                                        name="department.list.search.button.clear"/></button>
+
+                            </s:form>
+
+                            <!-- END SEARCH FORM -->
 
                             <div class="form-group">&nbsp;</div>
 
@@ -86,9 +122,8 @@
 
                                 <div class="row">
                                     <div class="col">
-                                        <a href="#" class="btn btn-success">
-                                            <i class="fas fa-plus-square"></i>
-                                            Create
+                                        <a href="${pageContext.request.contextPath}/department/createDepartment" class="btn btn-success">
+                                            <i class="fas fa-plus-square"></i> <s:text name="department.list.button.create"/>
                                         </a>
                                     </div>
                                 </div>
@@ -97,41 +132,45 @@
                                         <jsp:param name="paging" value="${paging}" />
                                     </jsp:include>
                                 </div>
-                                <table class="table table-striped">
-                                    <thead>
+                                <table class="table table-bordered table-hover">
+                                    <thead class="thead-light">
                                     <tr>
-                                        <th><s:text name="no"/></th>
-                                        <th><s:text name="code"/></th>
-                                        <th><s:text name="name"/></th>
-                                        <th><s:text name="description"/></th>
-                                        <th align="center"><s:text name="action"/></th>
+                                        <th><s:text name="No"/></th>
+                                        <th><s:text name="CODE"/></th>
+                                        <th><s:text name="NAME"/></th>
+                                        <th align="center"><s:text name="ACTION"/></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <s:iterator value="departmentDtos" status="loop">
+                                    <s:iterator value="departmentDto" status="loop">
                                         <tr>
                                             <td>${loop.count}</td>
                                             <td><s:property value="code"/></td>
                                             <td><s:property value="name"/></td>
-                                            <td><s:property value="description"/></td>
                                             <td align="center">
-                                                <a href="#" class="btn btn-outline-success">
+                                                <a href="<s:url value="/department/updateDepartment">
+                                                    <s:param name="id" value="%{id}"/>
+                                                </s:url> " class="btn btn-outline-success">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-outline-danger">
+                                                <a href="<s:url value="/department/removeDepartment">
+                                                    <s:param name="id" value="%{id}"/>
+                                                </s:url>" class="btn btn-outline-danger">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
                                         </tr>
                                     </s:iterator>
+
                                     </tbody>
                                 </table>
                                 <div class="row">
                                     <div class="col">
-                                        <a href="#" class="btn btn-success">
-                                            <i class="fas fa-plus-square"></i>
-                                            Create
-                                        </a>
+                                        <div class="col">
+                                            <a href="${pageContext.request.contextPath}/department/createDepartment" class="btn btn-success">
+                                                <i class="fas fa-plus-square"></i> <s:text name="department.list.button.create"/>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

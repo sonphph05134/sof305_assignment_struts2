@@ -18,7 +18,7 @@ import java.util.List;
 @Action("department")
 @Results(
         {
-                @Result(name = "success", location = "../webapp/views/department/indexDepartment.jsp")
+                @Result(name = "success", location = "/WEB-INF/views/department/indexDepartment.jsp")
         }
 )
 public class DepartmentIndexAction extends ActionSupport implements ModelDriven<ListDataDto> {
@@ -39,19 +39,22 @@ public class DepartmentIndexAction extends ActionSupport implements ModelDriven<
         private String name;
         private Long pn;
 
-    public String listDepartment() throws Exception {
+    public String execute() throws Exception {
 
         //TODO param for search function
                 if (pn != null) {
-                listDepartment = departmentService.list(code,name,pn);
-                } else listDepartment = departmentService.list(code, name, 1L);
-                departmentDto = listDepartment.getList();
-                listPagingDto = listDepartment.getPaging();
+                    listDepartment = departmentService.list(code,name,pn);
+                } else {
+                    listDepartment = departmentService.list(code, name, 1L);
+                    departmentDto = listDepartment.getList();
+                    listPagingDto = listDepartment.getPaging();
+                }
 
                 if (listPagingDto.getTotalRecords() == null) {
-                addActionMessage(getText("department.list.search.message.empty"));
-                } else addActionMessage(getText("department.list.search.message.found")+"\t"+listPagingDto.getTotalRecords());
-
+                    addActionMessage(getText("department.list.search.message.empty"));
+                } else {
+                    addActionMessage(getText("department.list.search.message.found") + "\t" + listPagingDto.getTotalRecords());
+                }
                 return SUCCESS;
     }
 

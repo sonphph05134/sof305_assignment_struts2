@@ -1,16 +1,13 @@
-
+<%@page pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/common/common.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <s:head/>
-    <%@include file="/WEB-INF/common/head.jsp"%>
+	<%@include file="/WEB-INF/common/head.jsp"%>
 </head>
-<body >
-    <section id="container">
-        <!-- Begin header -->
+<body>
+	<section id="container">
         <%@include file="/WEB-INF/common/header.jsp"%>
-        <!-- Begin header -->
         <div class="row">
              <!--Begin aside bar -->
             <div class="col-md-2" style="background-color: #34495e;">
@@ -37,52 +34,44 @@
                  <div class="form-group">&nbsp;</div>
 
                 <div class="container">
-
-                    <h2>departmentIndex.title</h2>
-                    <div >&nbsp; </div>
-                    <h2>departmentIndex.title.label</h2>
-                    <div >&nbsp; </div>
+                    
+                    <h1><spring:message code="homepageIndex.department"/> </h1>
+                    
+                    <h3><spring:message code="label.department.removeSceen"/></h3>
+                    <div class="form-group">&nbsp;</div>
             
                     <!-- BEGIN CREATE FORM -->
-                    <s:actionerror theme="bootstrap"/>
-                    <s:actionmessage theme="bootstrap"/>
-                    <s:fielderror theme="bootstrap"/>
                     <div>
-                        <s:form action="/department/createDepartmentProcess" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal mt-4">
+                        <s:form action="/department/removeProcessDepartment?id=%{id}" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal">
+                            <s:hidden name="id" value="%{id}"/>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <s:textfield key="code"
                                                  placeholder="code"
                                                  id="code"
-                                                 tooltip="Enter Department Code here"/>
+                                                 tooltip="Enter Department Code here" readonly="true"/>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <s:textfield key="name"
                                                  placeholder="name"
                                                  id="name"
-                                                 tooltip="Enter Department Name here"/>
+                                                 tooltip="Enter Department Name here" readonly="true"/>
                                 </div>
-
                             </div>
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary"><s:text
-                                        name="department.create.button.create"/></button>
+                                <button type="submit" class="btn btn-danger"><s:text
+                                        name="department.remove.button.remove"/></button>
                                 <a href="<s:url value="/department"/>" class="btn btn-secondary"><i
-                                        class="fas fa-angle-left"></i>&nbsp;<s:text name="department.create.button.back"/> </a>
+                                        class="fas fa-angle-left"></i>&nbsp;<s:text name="department.remove.button.back"/> </a>
                             </div>
                         </s:form>
-
-                            <!-- Begin Message --->
-
-                            <!--  End Message --->
                     </div>
-
                         <!-- END CREATE FORM -->
     
                 </div>
             </div>
         </div>
     </section>
-
+	
 </body>
 </html>

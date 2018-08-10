@@ -28,12 +28,12 @@
                                     <ul>
                                         <li >
                                             <a href="?lang=en">
-                                                <img src="<s:url value="/assets/images/UkFlag.png" />" width="15px" height="15px"/>EN
+                                                <img src="<s:url value="/assets/images/UkFlag.png" />" width="15px" height="15px"/>English
                                             </a>
                                         </li>
                                         <li >
                                             <a href="?lang=vn">
-                                                <img src="<s:url value="/assets/images/VnFlag.png" />" width="15px" height="15px"/>VI
+                                                <img src="<s:url value="/assets/images/VnFlag.png" />" width="15px" height="15px"/>Vietnamese
                                             </a>
                                         </li>
                                     </ul>

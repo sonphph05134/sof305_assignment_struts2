@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sonphph05134-assignment-struts2">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="sonphph05134-assignment-struts2.war">
+      <element id="artifact" artifact-name="sonphph05134-assignment-struts2:war exploded" />
+    </root>
+  </artifact>
+</component>

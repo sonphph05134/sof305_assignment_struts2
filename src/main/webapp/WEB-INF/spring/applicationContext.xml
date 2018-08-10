@@ -5,10 +5,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- Hibenrate Configuration -->
-    <import resource="classpath*:/hibernate-cfg.xml" />
+    <import resource="classpath*:config/hibernate-cfg.xml" />
 
     <!-- Component auto scan -->
     <context:component-scan base-package="vn.poly.sof305.sonphph05134.auth" />
     <context:component-scan base-package="vn.poly.sof305.sonphph05134.homepage" />
     <context:component-scan base-package="vn.poly.sof305.sonphph05134.department" />
+    <context:component-scan base-package="vn.poly.sof305.sonphph05134.employee" />
+    <context:component-scan base-package="vn.poly.sof305.sonphph05134.record" />
+    <context:component-scan base-package="vn.poly.sof305.sonphph05134.statistic" />
 </beans>

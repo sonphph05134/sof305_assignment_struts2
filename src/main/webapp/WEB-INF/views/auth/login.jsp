@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <sb:head/>
+    <%--<sb:head/>--%>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Assignment </title>
     <!-- Custom Theme files -->
@@ -28,10 +28,22 @@
     </style>
 </head>
 <body >
-    <s:actionerror theme="bootstrap"/>
-    <%--<s:actionmessage theme="bootstrap"/>--%>
-    <s:fielderror theme="bootstrap"/>
+    <%--<s:actionerror theme="bootstrap"/>--%>
+    <%--&lt;%&ndash;<s:actionmessage theme="bootstrap"/>&ndash;%&gt;--%>
+    <%--<s:fielderror theme="bootstrap"/>--%>
         <!--header start here-->
+    <div class="col-md-2" style="color:white;">
+        <div class="row">
+            <a href="?lang=en">
+                <img src="<s:url value="/assets/images/UkFlag.png" />" width="15px" height="15px"/>
+                <h6 style="color: white"> Eng</h6>
+            </a>
+            <a href="?lang=vn">
+                <img src="<s:url value="/assets/images/VnFlag.png" />" width="15px" height="15px"/>
+                <h6 style="color: white"> VNI</h6>
+            </a>
+        </div>
+    </div>
         <div class="header">
             <div class="header-main">
                 <h1>Login Form</h1>
@@ -43,7 +55,9 @@
                             <s:form action="loginProcess"  theme="bootstrap" cssClass="form-horizontal" method="post">
                                 <div class="row">
                                     <s:textfield  size="200px" name="model.username" id="username"/>
+
                                     <s:password   size="200px" name="model.password" id="password"/>
+
                                 </div>
 
                                 <div class="remember">
@@ -56,6 +70,10 @@
                                     <div class="clear"> </div>
                                 </div>
                                 <div class="col-md-6 col-md-offset-3">
+
+                                    <s:if test="hasActionErrors()">
+                                        <s:actionerror cssClass="text-center text-danger mb-2"/>
+                                    </s:if>
                                     <s:submit  name ="login" value="Login"  />
                                 </div>
                             </s:form>
