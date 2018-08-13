@@ -8,9 +8,9 @@
                 <!--logo start-->
 
                 <div class="">
-                    <a href="<s:url action="homePage"/>" class="logo">
+                    <a href="<s:url value="/home"/>" class="logo">
                         <img src="<s:url value="/assets/images/Logo.jpg"/>" width="10%">
-                        <strong style="color: white">ABC Group</strong>
+                        <strong style="color: white"><s:text name="header.corporation.name"/></strong>
                     </a>
                 </div>
                 <!--logo end-->
@@ -18,7 +18,7 @@
                     <div class="nav pull-right" id="top_menu">
                         <!--  Start Button Login/logout -->
                         <div class="row">
-
+                            <h3 style="color: white;"> <s:text name="header.welcome.title"/> &nbsp;</h3>
                             <div class="dropdown show">
                                 <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <c:out value="${sessionScope.get('userLogin').name}"></c:out>
@@ -27,19 +27,19 @@
                                 <div class="dropdown-menu" >
                                     <ul>
                                         <li >
-                                            <a href="?lang=en">
-                                                <img src="<s:url value="/assets/images/UkFlag.png" />" width="15px" height="15px"/>English
+                                            <a href="?request_locale=en">
+                                                <img src="<s:url value="/assets/images/UkFlag.png" />" width="15px" height="15px"/><span> <s:text name="login.language.en" /></span>
                                             </a>
                                         </li>
                                         <li >
-                                            <a href="?lang=vn">
-                                                <img src="<s:url value="/assets/images/VnFlag.png" />" width="15px" height="15px"/>Vietnamese
+                                            <a href="?request_locale=vn">
+                                                <img src="<s:url value="/assets/images/VnFlag.png" />" width="15px" height="15px"/> <span><s:text name="login.language.vi"/></span>
                                             </a>
                                         </li>
                                     </ul>
 
                                     <a class="nav-link" href="${pageContext.request.contextPath}/logout">
-                                        Logout
+                                        <s:text name="header.logout.label"/>
                                     </a>
                                 </div>
                             </div>

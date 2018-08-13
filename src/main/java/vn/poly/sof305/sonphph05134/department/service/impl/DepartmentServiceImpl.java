@@ -11,6 +11,7 @@ import vn.poly.sof305.sonphph05134.common.dto.ListPagingDto;
 import vn.poly.sof305.sonphph05134.common.entities.Department;
 import vn.poly.sof305.sonphph05134.common.utils.DataTransformUtil;
 import vn.poly.sof305.sonphph05134.department.dto.DepartmentDto;
+import vn.poly.sof305.sonphph05134.department.form.DepartmentCreateForm;
 import vn.poly.sof305.sonphph05134.department.repository.DepartmentRepository;
 import vn.poly.sof305.sonphph05134.department.service.DepartmentService;
 
@@ -34,6 +35,15 @@ public class DepartmentServiceImpl extends BaseService implements DepartmentServ
     /*=====================================================================================================
      *===== MAPPING METHOD                                                                            =====
      *=====================================================================================================*/
+
+    @Override
+    public boolean checkCode(String code) {
+        List<Department> listCode = departmentRepository.searchByCode(code);
+        if(listCode.isEmpty()){
+            return false;
+        }
+        return true;
+    }
 
     @Override
     public ListDataDto<DepartmentDto> list(String code, String name, Long pn) {
@@ -130,7 +140,6 @@ public class DepartmentServiceImpl extends BaseService implements DepartmentServ
         // Return remove result
         return departmentRepository.remove(department);
     }
-
 }
 
 

@@ -23,19 +23,19 @@
             <div class="col-md-2" style="background-color: #34495e;">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link " href="<s:url action="homePage"/>" >homepage</a>
+                        <a class="nav-link " href="<s:url value="/home"/>"> homepage</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="<s:url action="department"/>" >department</a>
+                        <a class="nav-link " href="<s:url value="/department"/>" >department</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="<s:url action="employee"/>" >employee</a>
+                        <a class="nav-link active" href="<s:url value="/employee"/>" >employee</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="<s:url action="record"/>" >recording</a>
+                        <a class="nav-link " href="<s:url value="/record"/>" >recording</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="<s:url action="statistic"/>" >statistic</a>
+                        <a class="nav-link " href="<s:url value="/statistic"/>" >statistic</a>
                     </li>
                 </ul>
             </div>
@@ -54,30 +54,38 @@
                             <!-- End Top Message -->
                             <div >&nbsp; </div>
                             <!-- Begin Search screen -->
+
                             <div>
                                     <div class="row">
                                         <div class="form-group col">
-                                            <s:form theme="bootstrap" cssClass="well form-search">
-                                                <s:textfield
-                                                        label="Code"
-                                                        name="name"
-                                                        helpText="This Textfield has an Help Text."
-                                                        tooltip="Enter your Name here"/>
-                                                <s:textfield
-                                                        label="Name"
-                                                        name="name"
-                                                        helpText="This Textfield has an Help Text."
-                                                        tooltip="Enter your Name here"/>
+                                            <s:form action="employee" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" id="searchForm">
+                                                <div class="alert alert-heading alert-dismissible fade show font-weight-bold" role="alert">
+                                                    <s:if test="hasActionMessages()">
+                                                        <s:actionmessage theme="bootstrap"/>
+                                                    </s:if>
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <s:hidden name="pn" value="%{pn}" id="pageNo"/>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <s:textfield key="code" cssClass="form-control" id="code"/>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <s:textfield key="name" cssClass="form-control" id="name"/>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary" id="btnSearch"><i class="fas fa-search"></i><s:text
+                                                        name="department.list.search.button.search"/></button>
+                                                <%--   <s:submit key="button.search" value="Search" cssClass="btn btn-outline-primary"/>--%>
+                                                <button type="submit" class="btn btn-warning" id="btnClear"><i class="fas fa-eraser"></i><s:text
+                                                        name="department.list.search.button.clear"/></button>
                                             </s:form>
                                         </div>
 
                                     </div>
-                                    <button type="submit" class="btn btn-primary" id="btnSearch">Search
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button type="reset" class="btn btn-warning" id="btnClear">Clear
-                                        <i class="fas fa-eraser"></i>
-                                    </button>
                             </div>
                             <!-- End Search screen -->
 
@@ -85,7 +93,6 @@
 
                             <!-- Begin List screen -->
                             <div>
-
                                 <div class="row">
                                     <div class="col">
                                         <a href="#" class="btn btn-success">
@@ -94,32 +101,57 @@
                                         </a>
                                     </div>>
                                 </div>
-                                <table class="table table-striped">
-                                    <thead>
+                                <table class="table table-bordered table-hover">
+                                    <thead class="thead-light">
                                     <tr>
-                                        <th>employee.no</th>
-                                        <th>employee.code</th>
-                                        <th>employee.name</th>
-                                        <th align="center">employee.action</th>
+                                        <th><s:text name="no"/></th>
+                                        <th><s:text name="code"/></th>
+                                        <th><s:text name="name"/></th>
+                                        <th><s:text name="gender"/></th>
+                                        <th><s:text name="departmentName"/></th>
+                                        <th><s:text name="photo"/></th>
+                                        <th align="center"><s:text name="action"/></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th>1</th>
-                                        <th>NV001</th>
-                                        <th>Phan Hoài Sơn</th>
-                                        <td>
-                                            <a href=''>
-                                                <i class="far fa-edit"></i>
-                                            </a>
-                                            &nbsp;
-                                            <a href=''>
-                                                <i class="far fa-trash-alt"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    <s:iterator value="employeeDto" status="loop">
+                                        <tr>
+                                            <td>${loop.count}</td>
+                                            <td><s:property value="code"/></td>
+                                            <td><s:property value="name"/></td>
+                                            <td><s:property value="gender"/></td>
+                                            <td><s:property value="departmentName"/></td>
+                                            <td align="center">
+                                                    <%--FIXME--%>
+                                                    <%--<c:if test="${not empty employeeDtos.photo}">
+                                                        <img alt="${employeeDtos.code}" src="${pageContext.request.contextPath}/uploads/${employeeDtos.photo}" width="100px"/>
+                                                    </c:if>
+                                                    <c:if test="${empty employeeDtos.photo}">
+                                                        <img alt="${employeeDtos.code}" src="<spring:url value="/upload/default-user-image.png"/>" width="100px"/>
+                                                    </c:if>--%>
+                                            </td>
+                                            <td align="center">
+                                                <a href="<s:url value="employee/update">
+                                                    <s:param name="id" value="%{id}"/>
+                                                </s:url> " class="btn btn-outline-success">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="<s:url value="employee/remove">
+                                                    <s:param name="id" value="%{id}"/>
+                                                </s:url>" class="btn btn-outline-danger">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </s:iterator>
+
                                     </tbody>
                                 </table>
+                                <div class="col">
+                                    <div class="pull-right">
+                                        <%@include file="/WEB-INF/common/paging.jsp" %>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col">
                                         <a href="#" class="btn btn-success">

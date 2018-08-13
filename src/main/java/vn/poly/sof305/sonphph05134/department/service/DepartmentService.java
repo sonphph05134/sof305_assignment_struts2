@@ -14,6 +14,12 @@ import vn.poly.sof305.sonphph05134.department.dto.DepartmentDto;
 public interface DepartmentService extends BaseServiceInterface {
 
     /*
+     * check code department
+     * @param code
+     * @return list department
+     */
+    boolean checkCode(String code);
+    /*
      * Get list department
      * 
      * @param code

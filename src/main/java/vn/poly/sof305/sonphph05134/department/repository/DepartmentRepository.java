@@ -13,6 +13,12 @@ import java.util.List;
  */
 public interface DepartmentRepository {
 
+    /**
+     * Search department by code
+     * @param code depatment code
+     * @return
+     */
+    List<Department> searchByCode(String code);
 	/**
      * Count list department
      *

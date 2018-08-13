@@ -23,7 +23,14 @@ public class DepartmentRepositoryImpl extends BaseRepository implements Departme
 		super(sessionFactory);
 	}
 
-	 @Override
+	@Override
+	public  List<Department> searchByCode(String code) {
+		Query<Department> query = this.getCurrentSession().createQuery("FROM Department WHERE code = :code", Department.class);
+		query.setParameter("code", code);
+		return query.list();
+	}
+
+	@Override
 	    public Long count(String code, String name) {
 
 	        // Build query string with default delFlg conditional
@@ -43,16 +50,16 @@ public class DepartmentRepositoryImpl extends BaseRepository implements Departme
 	        Query query = this.getCurrentSession().createQuery(queryStb.toString());
 
 	        // Set delFlg parameter
-	        query.setString("delFlg", Department.DelFlg.UNDELETED.name());
+	        query.setParameter("delFlg", Department.DelFlg.UNDELETED);
 
 	        // Set code parameter
 	        if (StringUtils.isNotBlank(code)) {
-	            query.setString("code", "%" + code + "%");
+	            query.setParameter("code", "%" + code + "%");
 	        }
 
 	        // Set name parameter
 	        if (StringUtils.isNotBlank(name)) {
-	            query.setString("name", "%" + name + "%");
+	            query.setParameter("name", "%" + name + "%");
 	        }
 
 	        return (Long) query.uniqueResult();
@@ -81,16 +88,16 @@ public class DepartmentRepositoryImpl extends BaseRepository implements Departme
 	        Query query = this.getCurrentSession().createQuery(queryStb.toString());
 
 	        // Set delFlg parameter
-	        query.setString("delFlg", Department.DelFlg.UNDELETED.name());
+	        query.setParameter("delFlg", Department.DelFlg.valueOf("UNDELETED"));
 
 	        // Set code parameter
 	        if (StringUtils.isNotBlank(code)) {
-	            query.setString("code", "%" + code + "%");
+	            query.setParameter("code", "%" + code + "%");
 	        }
 
 	        // Set name parameter
 	        if (StringUtils.isNotBlank(name)) {
-	            query.setString("name", "%" + name + "%");
+	            query.setParameter("name", "%" + name + "%");
 	        }
 
 	        return query.setFirstResult(offset).setMaxResults(limit).list();

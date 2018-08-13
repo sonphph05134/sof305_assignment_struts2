@@ -10,11 +10,13 @@ import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import vn.poly.sof305.sonphph05134.common.dto.ListDataDto;
 import vn.poly.sof305.sonphph05134.common.utils.DataTransformUtil;
 import vn.poly.sof305.sonphph05134.department.dto.DepartmentDto;
 import vn.poly.sof305.sonphph05134.department.form.DepartmentCreateForm;
 import vn.poly.sof305.sonphph05134.department.service.DepartmentService;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,6 +31,7 @@ import java.util.regex.Pattern;
 public class DepartmentCreateAction extends ActionSupport implements ModelDriven<DepartmentCreateForm> {
     private final DepartmentService departmentService;
 
+
     @Autowired
     public DepartmentCreateAction(DepartmentService departmentService) {
         this.departmentService = departmentService;
@@ -36,6 +39,7 @@ public class DepartmentCreateAction extends ActionSupport implements ModelDriven
 
     private DepartmentCreateForm departmentCreateForm = new DepartmentCreateForm();
     private DepartmentDto departmentDto = new DepartmentDto();
+
 
     @Action("createDepartment")
     public String execute() throws Exception {
@@ -45,6 +49,7 @@ public class DepartmentCreateAction extends ActionSupport implements ModelDriven
     @Action("createDepartmentProcess")
     public String inputDepartment() throws Exception {
         if (departmentCreateForm != null) {
+
             if (!validateForm()) {
                 return INPUT;
             }
@@ -57,7 +62,8 @@ public class DepartmentCreateAction extends ActionSupport implements ModelDriven
                 return INPUT;
             }
 
-        } else return INPUT;
+        } else
+            return INPUT;
 
 
     }
@@ -65,6 +71,11 @@ public class DepartmentCreateAction extends ActionSupport implements ModelDriven
     private boolean validateForm() {
         boolean checkForm = true;
 
+        //Check duplication code
+        if(departmentService.checkCode(departmentCreateForm.getCode())){
+            addFieldError("code",getText("Error duplication code"));
+            checkForm=false;
+        }
         //Check code empty
         if (StringUtils.isBlank(departmentCreateForm.getCode())) {
             addFieldError("code", getText("department.create.code.error.empty"));

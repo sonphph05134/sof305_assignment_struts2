@@ -34,19 +34,19 @@
         <!--header start here-->
     <div class="col-md-2" style="color:white;">
         <div class="row">
-            <a href="?lang=en">
+            <a href="?request_locale=en">
                 <img src="<s:url value="/assets/images/UkFlag.png" />" width="15px" height="15px"/>
-                <h6 style="color: white"> Eng</h6>
+                <span style="color: white"><s:text name="login.language.en" /></span>
             </a>
-            <a href="?lang=vn">
+            <a href="?request_locale=vn">
                 <img src="<s:url value="/assets/images/VnFlag.png" />" width="15px" height="15px"/>
-                <h6 style="color: white"> VNI</h6>
+                <span style="color: white"><s:text name="login.language.vi"/></span>
             </a>
         </div>
     </div>
         <div class="header">
             <div class="header-main">
-                <h1>Login Form</h1>
+                <h1><span style="color: white"><s:text name="login.title"/></span></h1>
                 <div class="header-bottom">
                     <div class="header-right w3agile">
 
@@ -62,10 +62,10 @@
 
                                 <div class="remember">
                                     <span class="checkbox1">
-								            <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Remember me</label>
+								            <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i><s:text name="login.rememberMe"/></label>
                                     </span>
                                     <div class="forgot">
-                                        <h6><a href="#">Forgot Password?</a></h6>
+                                        <h6><a href="#"><span style="color: white"><s:text name="login.forgotPassword"/></a></h6>
                                     </div>
                                     <div class="clear"> </div>
                                 </div>
@@ -74,7 +74,7 @@
                                     <s:if test="hasActionErrors()">
                                         <s:actionerror cssClass="text-center text-danger mb-2"/>
                                     </s:if>
-                                    <s:submit  name ="login" value="Login"  />
+                                    <s:submit  key ="login.button" value="Login"  />
                                 </div>
                             </s:form>
                         </div>
