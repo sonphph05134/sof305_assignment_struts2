@@ -91,23 +91,23 @@
         <div class="row">
                     <!--Begin aside bar -->
                     <div class="col-md-2" style="background-color: #34495e;">
-                        <ul class="nav nav-pills flex-column">
-                          <li class="nav-item">
-                            <a class="nav-link " href="<c:url value="/"/>"><spring:message code="employeeIndex.homepage"/></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link " href="<c:url value="/department"/>"><spring:message code="employeeIndex.department"/></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link active" href="<c:url value="/employee"/>"><spring:message code="employeeIndex.employee"/></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link " href="<c:url value="/record"/>"><spring:message code="employeeIndex.recording"/></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link " href="<c:url value="/statistic"/>"><spring:message code="employeeIndex.statistic"/></a>
-                          </li>
-                        </ul>
+						<ul class="nav nav-pills flex-column">
+							<li class="nav-item">
+								<a class="nav-link " href="<s:url value="/home"/>"> <s:text name="nar.homepage.title"/></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link " href="<s:url value="/department"/>" ><s:text name="nar.department.title"/></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="<s:url value="/employee"/>" ><s:text name="nar.employee.title"/></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link  " href="<s:url value="/record"/>" ><s:text name="nar.record.title"/></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link " href="<s:url value="/statistic"/>" ><s:text name="nar.statistic.title"/></a>
+							</li>
+						</ul>
                     </div>
                 <!--End aside bar -->
                      <div class="col-md-10" style="background-color: #ecf0f1;">

@@ -23,19 +23,19 @@
                 <div class="col-md-2" style="background-color: #34495e;">
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <a class="nav-link " href="<s:url action="homePage"/>" >homepage</a>
+                            <a class="nav-link " href="<s:url value="/home"/>"> <s:text name="nar.homepage.title"/></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="<s:url action="department"/>" >department</a>
+                            <a class="nav-link " href="<s:url value="/department"/>" ><s:text name="nar.department.title"/></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<s:url action="employee"/>" >employee</a>
+                            <a class="nav-link " href="<s:url value="/employee"/>" ><s:text name="nar.employee.title"/></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="<s:url action="record"/>" >recording</a>
+                            <a class="nav-link active " href="<s:url value="/record"/>" ><s:text name="nar.record.title"/></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="<s:url action="statistic"/>" >statistic</a>
+                            <a class="nav-link " href="<s:url value="/statistic"/>" ><s:text name="nar.statistic.title"/></a>
                         </li>
                     </ul>
                 </div>
@@ -49,37 +49,46 @@
                                 <div >&nbsp; </div>
                                 <h2>recordIndex.title.label</h2>
                                 <div >&nbsp; </div>
-                                <!-- Begin Top Message -->
-
-                                <!-- End Top Message -->
+                                <!-- BEGIN TOP MESSAGE -->
+                                <div class="alert alert-heading alert-dismissible fade show font-weight-bold" role="alert">
+                                    <s:if test="hasActionMessages()">
+                                        <s:actionmessage theme="bootstrap"/>
+                                    </s:if>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <!-- END TOP MESSAGE -->
                                 <div >&nbsp; </div>
                                 <!-- Begin Search screen -->
                                 <div>
 
-                                    <form:form modelAttribute="record" method="GET" action="${(listAction)}" id="searchForm">
-                                        <div class="row">
-                                            <div class="form-group col">
-                                                <s:form theme="bootstrap" cssClass="well form-search">
-                                                    <s:textfield
-                                                            label="Code"
-                                                            name="name"
-                                                            helpText="This Textfield has an Help Text."
-                                                            tooltip="Enter your Name here"/>
-                                                    <s:textfield
-                                                            label="Name"
-                                                            name="name"
-                                                            helpText="This Textfield has an Help Text."
-                                                            tooltip="Enter your Name here"/>
-                                                </s:form>
+                                    <s:form action="record" theme="bootstrap" cssClass="form-horizontal" id="searchForm">
+                                        <div>
+                                            <s:select list="employeeDto" listValue="name" listKey="id" name="employeeId" theme="bootstrap" cssClass="form-control"
+                                                      emptyOption="true" headerKey="0" headerValue="-------------------------------------------------     Employee List    ---------------------------------------------------"
+                                                      id="employeeId"/>
+                                        </div>
+                                        <s:hidden name="pn" value="%{pn}" id="pageNo"/>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <s:textfield key="code" cssClass="form-control" id="code"/>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <s:textfield key="name" cssClass="form-control" id="name"/>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary" id="btnSearch">Search
-                                            <i class="fas fa-search"></i>
+
+                                        <button type="submit" class="btn btn-primary" id="btnSearch">
+                                            <i class=" fas fa-search"></i>
+                                            <s:text name="record.list.search.button.search"/>
                                         </button>
-                                        <button type="reset" class="btn btn-warning" id="btnClear">Clear
+                                        <button type="submit" class="btn btn-warning" id="btnClear">
                                             <i class="fas fa-eraser"></i>
+                                            <s:text name="record.list.search.button.clear"/>
                                         </button>
-                                    </form:form>
+                                    </s:form>
                                 </div>
                                 <!-- End Search screen -->
 
@@ -87,50 +96,54 @@
 
                                 <!-- Begin List screen -->
                                 <div>
-
                                     <div class="row">
                                         <div class="col">
-                                            <a href="#" class="btn btn-success">
+                                            <a href="${pageContext.request.contextPath}/record/createRecord" class="btn btn-success">
                                                 <i class="fas fa-plus-square"></i>
-                                                Create
+                                                <s:text name="record.button.create" />
                                             </a>
-                                        </div>
+                                        </div>>
                                     </div>
-                                    <table class="table table-striped">
-                                        <thead>
+                                    <table class="table table-bordered table-hover" >
+                                        <thead class="thead-light">
                                         <tr>
-                                            <th>Record.no</th>
-                                            <th>Record.code</th>
-                                            <th>Record.type</th>
-                                            <th>Record.reason</th>
-                                            <th>Record.name</th>
-                                            <th align="center">Record.action</th>
+                                            <th><s:text name="no"/></th>
+                                            <th><s:text name="code"/></th>
+                                            <th><s:text name="type"/></th>
+                                            <th><s:text name="reason"/></th>
+                                            <th><s:text name="employeeName"/></th>
+                                            <th align="center"><s:text name="action"/></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <th>1</th>
-                                            <th>nv001</th>
-                                            <th>TT</th>
-                                            <td>Goodlike</td>
-                                            <td>Phan Hoài Sơn</td>
-                                            <td>
-                                                <a href=''>
-                                                    <i class="far fa-edit"></i>
-                                                </a>
-                                                &nbsp;
-                                                <a href=''>
-                                                    <i class="far fa-trash-alt"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                            <s:iterator value="recordDto" status="loop" var="list">
+                                                <tr>
+                                                    <td>${loop.count}</td>
+                                                    <td><s:property value="code"/></td>
+                                                    <td><s:property value="type"/></td>
+                                                    <td><s:property value="reason"/></td>
+                                                    <td><s:property value="employeeName"/></td>
+                                                    <td align="center">
+                                                        <a href="<s:url value="record/updateRecord">
+                                                            <s:param name="id" value="%{id}"/>
+                                                        </s:url> " class="btn btn-outline-success">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <a href="<s:url value="record/removeRecord">
+                                                            <s:param name="id" value="%{id}"/>
+                                                        </s:url>" class="btn btn-outline-danger">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </s:iterator>
                                         </tbody>
                                     </table>
                                     <div class="row">
                                         <div class="col">
                                             <a href="#" class="btn btn-success">
                                                 <i class="fas fa-plus-square"></i>
-                                                Create
+                                                <s:text name="record.button.create"/>
                                             </a>
                                         </div>
                                     </div>

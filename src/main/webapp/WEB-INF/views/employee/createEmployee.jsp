@@ -75,23 +75,23 @@
         <div class="row">
                     <!--Begin aside bar -->
 			<div class="col-md-2" style="background-color: #34495e;">
-				<<ul class="nav nav-pills flex-column">
-				<li class="nav-item">
-					<a class="nav-link " href="<s:url value="/home"/>"> homepage</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link " href="<s:url value="/department"/>" >department</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" href="<s:url value="/employee"/>" >employee</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link " href="<s:url value="/record"/>" >recording</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link " href="<s:url value="/statistic"/>" >statistic</a>
-				</li>
-			</ul>
+				<ul class="nav nav-pills flex-column">
+					<li class="nav-item">
+						<a class="nav-link " href="<s:url value="/home"/>"> <s:text name="nar.homepage.title"/></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link " href="<s:url value="/department"/>" ><s:text name="nar.department.title"/></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" href="<s:url value="/employee"/>" ><s:text name="nar.employee.title"/></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link  " href="<s:url value="/record"/>" ><s:text name="nar.record.title"/></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link " href="<s:url value="/statistic"/>" ><s:text name="nar.statistic.title"/></a>
+					</li>
+				</ul>
 			</div>
                 <!--End aside bar -->
                     <div class="col-md-10" style="background-color: #ecf0f1;">
@@ -106,10 +106,11 @@
 										<s:form action="/employee/createEmployeeProcess"  enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal mt-4">
 	                                        <div class="row">
 	                                            <div class="col">
-	                                                <div class="form-group">
-														<%--<s:select key="employee.list.label.departmentList" list="departmentDto" headerKey="-1" headerValue="-----   <s:text name="employeeIndex.select.department.label"/>  -----"--%>
-																  <%--listKey="id" listValueKey="codeAndName"/>--%>
-	                                                </div>
+                                                    <%--<div>--%>
+                                                        <%--<s:select list="departmentDto" listValue="name" listKey="id" name="departmentId" theme="bootstrap" cssClass="form-control"--%>
+                                                                  <%--emptyOption="true" headerKey="0" headerValue="-----------------------------------------     Department List    -----------------------------------------------"--%>
+                                                                  <%--id="departmentId"/>--%>
+                                                    <%--</div>--%>
 
 	                                                <div class="form-group">
 

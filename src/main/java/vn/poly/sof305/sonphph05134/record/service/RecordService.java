@@ -1,35 +1,35 @@
-/**
- * 
- */
-package vn.poly.sof305.sonphph05134.department.service;
+package vn.poly.sof305.sonphph05134.record.service;
 
-import vn.poly.sof305.sonphph05134.common.bases.BaseServiceInterface;
+import java.util.List;
+
 import vn.poly.sof305.sonphph05134.common.dto.ListDataDto;
-import vn.poly.sof305.sonphph05134.department.dto.DepartmentDto;
+import vn.poly.sof305.sonphph05134.record.dto.EmployeeDto;
+import vn.poly.sof305.sonphph05134.record.dto.RecordDto;
+
 
 /**
  * @author Hoai Son
  *
  */
-public interface DepartmentService extends BaseServiceInterface {
 
+public interface RecordService {
     /*
      * check code department
      * @param code
      * @return list department
      */
     boolean checkCode(String code);
+
     /*
      * Get list department
-     * 
+     *
      * @param code
      * @param name
      * @param pn
-     * 
+     *
      * @return list department
      */
-    ListDataDto<DepartmentDto> list(String code, String name, Long pn);
-
+    List<EmployeeDto> employees(String code);
     /*
      * Get detail info of department
      *
@@ -37,32 +37,33 @@ public interface DepartmentService extends BaseServiceInterface {
      * @
      * return
      */
-    DepartmentDto detail(Long id);
-    
+    ListDataDto<RecordDto> list(Long employeeId, String code, String reason, Long pn);
+
+    RecordDto detail(Long id);
     /*
      * Create new department
-     * 
+     *
      * @param departmentDto
-     * 
+     *
      * Return Create Id
      */
-    Long create(DepartmentDto departmentDto);
-    
+
+    Long create(RecordDto recordDto);
     /*
      * Update existed department
-     * 
+     *
      * @param id
-     * 
+     *
      * @return
      */
-    Long update(DepartmentDto departmentDto);
-    
+    Long update(RecordDto recordDto);
     /*
      * Remove existed department
-     * 
+     *
      * @param id
-     * 
+     *
      * @return
      */
     Long remove(Long id);
+
 }

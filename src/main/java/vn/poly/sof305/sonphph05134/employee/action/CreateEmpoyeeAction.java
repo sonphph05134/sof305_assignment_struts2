@@ -21,6 +21,7 @@ import vn.poly.sof305.sonphph05134.employee.form.EmployeeCreateForm;
 import vn.poly.sof305.sonphph05134.employee.service.EmployeeService;
 import vn.poly.sof305.sonphph05134.employee.dto.DepartmentDto;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,7 +44,7 @@ public class CreateEmpoyeeAction extends ActionSupport implements ModelDriven<Em
 
     private EmployeeCreateForm employeeCreateForm = new EmployeeCreateForm();
     private EmployeeDto employeeDto = new EmployeeDto();
-
+    private List<DepartmentDto> departmentDto;
 
     @Action("createEmployee")
     public String execute() throws Exception {
@@ -68,44 +69,7 @@ public class CreateEmpoyeeAction extends ActionSupport implements ModelDriven<Em
 
         } else return INPUT;
 
-//public class FileUploadAction extends ActionSupport implementsServletRequestAware {
-//    private File userImage;private String userImageContentType;
-//    private String userImageFileName;
-//    private HttpServletRequest servletRequest;
-//public String execute() {
-//    try {String filePath = servletRequest.getRealPath("/");
-//        System.out.println("Server path:" + filePath);
-//        File fileToCreate = new File(filePath, this.userImageFileName);
-//        FileUtils.copyFile(this.userImage, fileToCreate);
-//    }
-//        catch (Exception e) {
-//        e.printStackTrace();addActionError(e.getMessage());
-//        return INPUT;
-//    }
-//    return SUCCESS;
-//}
-//    public File getUserImage() {
-//    return userImage;
-//    }
-//    public void setUserImage(File userImage) {
-//    this.userImage = userImage;
-//    }
-//    public String getUserImageContentType() {
-//    return userImageContentType;}
-//
-//    public void setUserImageContentType(String userImageContentType) {
-//    this.userImageContentType = userImageContentType;
-//    }
-//    public String getUserImageFileName() {
-//    return userImageFileName;
-//    }
-//    public void setUserImageFileName(String userImageFileName) {
-//    this.userImageFileName = userImageFileName;
-//    }
-//    @Override
-//    public void setServletRequest(HttpServletRequest servletRequest) {
-//    this.servletRequest = servletRequest;}}
-//    }
+
     }
     private boolean validateForm() {
         boolean checkForm = true;
@@ -172,5 +136,13 @@ public class CreateEmpoyeeAction extends ActionSupport implements ModelDriven<Em
 
     public void setEmployeeDto(EmployeeDto employeeDto) {
         this.employeeDto = employeeDto;
+    }
+
+    public List<DepartmentDto> getDepartmentDto() {
+        return departmentDto;
+    }
+
+    public void setDepartmentDto(List<DepartmentDto> departmentDto) {
+        this.departmentDto = departmentDto;
     }
 }

@@ -24,19 +24,19 @@
             <div class="col-md-2" style="background-color: #34495e;">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link " href="<s:url value="/home"/>"> homepage</a>
+                        <a class="nav-link " href="<s:url value="/home"/>"> <s:text name="nar.homepage.title"/></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="<s:url value="/department"/>" >department</a>
+                        <a class="nav-link " href="<s:url value="/department"/>" ><s:text name="nar.department.title"/></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="<s:url value="/employee"/>" >employee</a>
+                        <a class="nav-link active" href="<s:url value="/employee"/>" ><s:text name="nar.employee.title"/></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="<s:url value="/record"/>" >recording</a>
+                        <a class="nav-link  " href="<s:url value="/record"/>" ><s:text name="nar.record.title"/></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="<s:url value="/statistic"/>" >statistic</a>
+                        <a class="nav-link " href="<s:url value="/statistic"/>" ><s:text name="nar.statistic.title"/></a>
                     </li>
                 </ul>
             </div>
@@ -62,17 +62,9 @@
                                     <div class="row">
                                         <div class="form-group col">
                                             <s:form action="employee" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" id="searchForm">
-                                                <%--<div class="alert alert-heading alert-dismissible fade show font-weight-bold" role="alert">--%>
-                                                    <%--<s:if test="hasActionMessages()">--%>
-                                                        <%--<s:actionmessage theme="bootstrap"/>--%>
-                                                    <%--</s:if>--%>
-                                                    <%--<button type="button" class="close" data-dismiss="alert" aria-label="Close">--%>
-                                                        <%--<span aria-hidden="true">&times;</span>--%>
-                                                    <%--</button>--%>
-                                                <%--</div>--%>
                                                 <div>
                                                     <s:select list="departmentDto" listValue="name" listKey="id" name="departmentId" theme="bootstrap" cssClass="form-control"
-                                                    emptyOption="true"
+                                                    emptyOption="true" headerKey="-1" headerValue="-------------------------------------------------     Department List    ---------------------------------------------------"
                                                     id="departmentId"/>
                                                 </div>
                                                 <s:hidden name="pn" value="%{pn}" id="pageNo"/>
