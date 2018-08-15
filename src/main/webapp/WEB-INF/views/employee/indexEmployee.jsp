@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: hoais
@@ -54,20 +55,26 @@
                             <!-- End Top Message -->
                             <div >&nbsp; </div>
                             <!-- Begin Search screen -->
-
+                            <%--<s:actionerror theme="bootstrap"/>--%>
+                            <%--<s:actionmessage theme="bootstrap"/>--%>
+                            <%--<s:fielderror theme="bootstrap"/>--%>
                             <div>
                                     <div class="row">
                                         <div class="form-group col">
                                             <s:form action="employee" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" id="searchForm">
-                                                <div class="alert alert-heading alert-dismissible fade show font-weight-bold" role="alert">
-                                                    <s:if test="hasActionMessages()">
-                                                        <s:actionmessage theme="bootstrap"/>
-                                                    </s:if>
-                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
+                                                <%--<div class="alert alert-heading alert-dismissible fade show font-weight-bold" role="alert">--%>
+                                                    <%--<s:if test="hasActionMessages()">--%>
+                                                        <%--<s:actionmessage theme="bootstrap"/>--%>
+                                                    <%--</s:if>--%>
+                                                    <%--<button type="button" class="close" data-dismiss="alert" aria-label="Close">--%>
+                                                        <%--<span aria-hidden="true">&times;</span>--%>
+                                                    <%--</button>--%>
+                                                <%--</div>--%>
+                                                <div>
+                                                    <s:select list="departmentDto" listValue="name" listKey="id" name="departmentId" theme="bootstrap" cssClass="form-control"
+                                                    emptyOption="true"
+                                                    id="departmentId"/>
                                                 </div>
-
                                                 <s:hidden name="pn" value="%{pn}" id="pageNo"/>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
@@ -77,8 +84,8 @@
                                                         <s:textfield key="name" cssClass="form-control" id="name"/>
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary" id="btnSearch"><i class="fas fa-search"></i><s:text
-                                                        name="department.list.search.button.search"/></button>
+                                                <button type="submit" class="btn btn-primary" id="btnSearch"><i class="
+                                                fas fa-search"></i><s:text name="department.list.search.button.search"/></button>
                                                 <%--   <s:submit key="button.search" value="Search" cssClass="btn btn-outline-primary"/>--%>
                                                 <button type="submit" class="btn btn-warning" id="btnClear"><i class="fas fa-eraser"></i><s:text
                                                         name="department.list.search.button.clear"/></button>
@@ -95,13 +102,13 @@
                             <div>
                                 <div class="row">
                                     <div class="col">
-                                        <a href="#" class="btn btn-success">
+                                        <a href="${pageContext.request.contextPath}/employee/createEmployee" class="btn btn-success">
                                             <i class="fas fa-plus-square"></i>
                                             Create
                                         </a>
                                     </div>>
                                 </div>
-                                <table class="table table-bordered table-hover">
+                                <table class="table table-bordered table-hover" >
                                     <thead class="thead-light">
                                     <tr>
                                         <th><s:text name="no"/></th>
@@ -109,12 +116,14 @@
                                         <th><s:text name="name"/></th>
                                         <th><s:text name="gender"/></th>
                                         <th><s:text name="departmentName"/></th>
-                                        <th><s:text name="photo"/></th>
+                                        <th align="center"><s:text name="photo"/></th>
                                         <th align="center"><s:text name="action"/></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <s:iterator value="employeeDto" status="loop">
+                                        <%--<c:if test="${fn:length(listEmployees) > 0}">--%>
+                                            <%--<c:forEach items="${listEmployees}" var="employee" varStatus="loop">--%>
+                                    <s:iterator value="employeeDto" status="loop" var="list">
                                         <tr>
                                             <td>${loop.count}</td>
                                             <td><s:property value="code"/></td>
@@ -123,12 +132,13 @@
                                             <td><s:property value="departmentName"/></td>
                                             <td align="center">
                                                     <%--FIXME--%>
-                                                    <%--<c:if test="${not empty employeeDtos.photo}">
-                                                        <img alt="${employeeDtos.code}" src="${pageContext.request.contextPath}/uploads/${employeeDtos.photo}" width="100px"/>
-                                                    </c:if>
-                                                    <c:if test="${empty employeeDtos.photo}">
-                                                        <img alt="${employeeDtos.code}" src="<spring:url value="/upload/default-user-image.png"/>" width="100px"/>
-                                                    </c:if>--%>
+                                                        <s:if test="photo != null">
+                                                            <img src="${pageContext.request.contextPath}/uploads/<s:property value="photo"/>" width="20%"/>
+                                                        </s:if>
+                                                        <s:else >
+                                                            <img src="/uploads/default-user-image.jpg" width="20%"/>
+                                                        </s:else>
+
                                             </td>
                                             <td align="center">
                                                 <a href="<s:url value="employee/update">
@@ -154,11 +164,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <a href="#" class="btn btn-success">
+                                        <a href="${pageContext.request.contextPath}/employee/createEmployee" class="btn btn-success">
                                             <i class="fas fa-plus-square"></i>
                                             Create
                                         </a>
-                                    </div>
+                                    </div>>
                                 </div>
                             </div>
                             <!-- End List screen -->

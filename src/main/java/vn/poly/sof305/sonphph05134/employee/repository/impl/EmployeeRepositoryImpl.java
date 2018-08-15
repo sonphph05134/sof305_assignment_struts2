@@ -19,6 +19,7 @@ import vn.poly.sof305.sonphph05134.employee.repository.EmployeeRepository;
 @Repository
 public class EmployeeRepositoryImpl extends BaseRepository implements EmployeeRepository {
 	public EmployeeRepositoryImpl(SessionFactory sessionFactory) {
+
 		super(sessionFactory);
 	}
 

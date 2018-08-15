@@ -4,5 +4,11 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/vn/poly/sof305/sonphph05134/employee" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/main/java/vn/poly/sof305/sonphph05134/employee/service" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/uploads/default-user-image.jpg" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/uploads/hoavinh.jpg" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/uploads/ngoctrinh.jpg" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/uploads/phuongtrinh.jpg" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/uploads/ronaldo.jpg" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/uploads/thuylinh.jpg" charset="ISO-8859-1" />
   </component>
 </project>

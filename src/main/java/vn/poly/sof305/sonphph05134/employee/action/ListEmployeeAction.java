@@ -43,18 +43,32 @@ public class ListEmployeeAction extends ActionSupport implements ModelDriven<Lis
     private List<DepartmentDto> departmentDto;
     private ListPagingDto listPagingDto;
 
+    private String code;
+    private String name;
+    private Long pn;
+    private Long departmentId;
 
     public String execute() throws Exception {
 
-        //TODO param for search function
-        listEmployee = employeeService.list(null, null, null, 1L);
-        employeeDto = listEmployee.getList();
-        listPagingDto = listEmployee.getPaging();
 
-        //Get Department List
         //TODO param for search function
-        departmentDto= employeeService.departments(null);
+        if (pn != null) {
+            listEmployee = employeeService.list(departmentId,code,name,pn);
+        } else {
+            listEmployee = employeeService.list(departmentId,code,name,1L);
+            employeeDto = listEmployee.getList();
+            listPagingDto = listEmployee.getPaging();
+
+        }
+
+        if (listPagingDto.getTotalRecords() == null) {
+            addActionMessage(getText("department.list.search.message.empty"));
+        } else {
+            addActionMessage(getText("department.list.search.message.found") + "\t" + listPagingDto.getTotalRecords());
+        }
+        departmentDto=employeeService.departments(null);
         return SUCCESS;
+
     }
 
     /**
@@ -86,43 +100,45 @@ public class ListEmployeeAction extends ActionSupport implements ModelDriven<Lis
         this.listPagingDto = listPagingDto;
     }
 
-//    public String getCode() {
-//        return code;
-//    }
-//
-//    public void setCode(String code) {
-//        this.code = code;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public Long getPn() {
-//        return pn;
-//    }
-//
-//    public void setPn(Long pn) {
-//        this.pn = pn;
-//    }
-//
-//    public Long getDepartmentId() {
-//        return departmentId;
-//    }
+    public String getCode() {
+        return code;
+    }
 
-//    public void setDepartmentId(Long departmentId) {
-//
-//        this.departmentId = departmentId;
-//    }
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getPn() {
+        return pn;
+    }
+
+    public void setPn(Long pn) {
+        this.pn = pn;
+    }
+
+    public Long getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Long departmentId) {
+
+        this.departmentId = departmentId;
+    }
     public List<DepartmentDto> getDepartmentDto() {
 
         return departmentDto;
     }
     public void setDepartmentDto(List<DepartmentDto> departmentDto) {
+
         this.departmentDto = departmentDto;
     }
+
 }

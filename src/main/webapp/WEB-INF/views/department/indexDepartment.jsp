@@ -67,26 +67,13 @@
                             <div >&nbsp; </div>
                             <h2>departmentIndex.title.label</h2>
                             <div >&nbsp; </div>
-                            <!-- BEGIN TOP MESSAGE -->
-                            <c:if test="${not empty sessionMessageDto}">
-                                <div>
-                                    <div class="alert alert-success alert-dismissible fade show font-weight-bold" role="alert">
-                                        <spring:message code="${sessionMessageDto.messageCode}"
-                                                        arguments="${sessionMessageDto.messageArgs}"/>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </c:if>
-                            <!-- END TOP MESSAGE -->
-                            <div >&nbsp; </div>
                             <!-- Begin Search screen -->
                             <!-- BEGIN SEARCH FORM -->
                             <div class="form-group">&nbsp;</div>
                             <s:form action="department" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal"
                                     id="searchForm">
-                                <%--<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: 0.3em;"></span>--%>
+
+                                <!-- BEGIN TOP MESSAGE -->
                                 <div class="alert alert-heading alert-dismissible fade show font-weight-bold" role="alert">
                                     <s:if test="hasActionMessages()">
                                         <s:actionmessage theme="bootstrap"/>
@@ -95,7 +82,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-
+                                <!-- END TOP MESSAGE -->
                                 <s:hidden name="pn" value="%{pn}" id="pageNo"/>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">

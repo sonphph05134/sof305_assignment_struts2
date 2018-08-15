@@ -77,6 +77,7 @@ public class EmployeeServiceImpl extends BaseService implements EmployeeService 
 
         // Calculating paging
         ListPagingDto pagingDto = listDataDto.getPaging();
+
         pagingDto.setCurrentPage(pn);
 
         // Count record
