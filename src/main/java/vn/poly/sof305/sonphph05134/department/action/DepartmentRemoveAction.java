@@ -42,16 +42,16 @@ public class DepartmentRemoveAction extends ActionSupport implements ModelDriven
      *=====================================================================================================*/
     @Autowired
     public DepartmentRemoveAction(DepartmentService departmentService) {
-        this.departmentService = departmentService;
-    }
+            this.departmentService = departmentService;
+        }
 
-    private DepartmentRemoveForm departmentRemoveForm = new DepartmentRemoveForm();
-    private DepartmentDto departmentDto;
+        private DepartmentRemoveForm departmentRemoveForm = new DepartmentRemoveForm();
+        private DepartmentDto departmentDto;
 
-    @Action("/removeDepartment")
-    public String execute() throws Exception{
-        //get data
-        DepartmentDto departmentDto = departmentService.detail(id);
+        @Action("/removeDepartment")
+        public String execute() throws Exception{
+            //get data
+            DepartmentDto departmentDto = departmentService.detail(id);
         DataTransformUtil.transform(departmentDto, departmentRemoveForm);
         return INPUT;
     }
@@ -63,55 +63,6 @@ public class DepartmentRemoveAction extends ActionSupport implements ModelDriven
 
 
         return SUCCESS;
-    }
-
-    private boolean validateForm() {
-        boolean checkForm = true;
-
-        //Check code empty
-        if (StringUtils.isBlank(departmentRemoveForm.getCode())) {
-            addFieldError("code", getText("department.remove.code.error.empty"));
-            checkForm = false;
-        }
-        //Check code length
-        if (StringUtils.length(departmentRemoveForm.getCode()) < 1 || StringUtils.length(departmentRemoveForm.getCode()) > 6) {
-            addFieldError("code", getText("department.remove.code.error.length"));
-            checkForm = false;
-        }
-
-        //Check pattern: only allowed Alphanumberic
-        if (departmentRemoveForm.getCode() != null) {
-
-            Pattern p = Pattern.compile("^[a-zA-Z0-9]*$");
-            Matcher m = p.matcher(departmentRemoveForm.getCode());
-            boolean b = m.matches();
-            if (!b) {
-                addFieldError("code", getText("department.remove.code.error.specialCharacters"));
-                checkForm = false;
-            }
-        }
-
-        //Check pattern: code starts with 2 letters
-        Pattern p = Pattern.compile("^[a-zA-Z]{2}(.*)");
-        Matcher m = p.matcher(departmentRemoveForm.getCode());
-        boolean b = m.matches();
-        if (!b) {
-            addFieldError("code", getText("department.remove.code.error.startLetters"));
-            checkForm = false;
-        }
-
-        //Check name empty
-        if (StringUtils.isBlank(departmentRemoveForm.getName())) {
-            addFieldError("name", getText("department.remove.name.error.empty"));
-            checkForm = false;
-        }
-        //Check name length
-        if (StringUtils.length(departmentRemoveForm.getName()) < 1 || StringUtils.length(departmentRemoveForm.getName()) > 255) {
-            addFieldError("name", getText("department.remove.name.error.length"));
-            checkForm = false;
-        }
-
-        return checkForm;
     }
 
     /**

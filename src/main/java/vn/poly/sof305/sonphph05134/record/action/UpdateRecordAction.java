@@ -11,10 +11,12 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import vn.poly.sof305.sonphph05134.common.utils.DataTransformUtil;
+import vn.poly.sof305.sonphph05134.record.dto.EmployeeDto;
 import vn.poly.sof305.sonphph05134.record.dto.RecordDto;
 import vn.poly.sof305.sonphph05134.record.form.RecordUpdateForm;
 import vn.poly.sof305.sonphph05134.record.service.RecordService;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,18 +46,25 @@ public class UpdateRecordAction extends ActionSupport implements ModelDriven<Rec
     }
 
     private RecordUpdateForm recordUpdateForm = new RecordUpdateForm();
+    private List<EmployeeDto> listEmployeeDto;
 
     @Action("/updateRecord")
     public String execute() throws Exception {
+        listEmployeeDto= recordService.employees(null);
         RecordDto recordDto = recordService.detail(id);
         DataTransformUtil.transform(recordDto, recordUpdateForm);
 
+
         return INPUT;
+
     }
 
     @Action("/updateProcessRecord")
     public String updateRecord() {
+
         // TODO Validation
+
+        listEmployeeDto= recordService.employees(null);
         RecordDto recordDto = (RecordDto) DataTransformUtil.transform(recordUpdateForm, RecordDto.class);
         recordDto.setId(id);
 
@@ -123,5 +132,13 @@ public class UpdateRecordAction extends ActionSupport implements ModelDriven<Rec
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<EmployeeDto> getListEmployeeDto() {
+        return listEmployeeDto;
+    }
+
+    public void setListEmployeeDto(List<EmployeeDto> listEmployeeDto) {
+        this.listEmployeeDto = listEmployeeDto;
     }
 }

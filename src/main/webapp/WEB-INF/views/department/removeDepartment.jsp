@@ -42,7 +42,7 @@
             
                     <!-- BEGIN CREATE FORM -->
                     <div>
-                        <s:form action="/department/removeProcessDepartment?id=%{id}" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal">
+                        <s:form action="/record/removeProcessDepartment?id=%{id}" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal">
                             <s:hidden name="id" value="%{id}"/>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
@@ -60,9 +60,9 @@
                             </div>
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-danger"><s:text
-                                        name="department.remove.button.remove"/></button>
-                                <a href="<s:url value="/department"/>" class="btn btn-secondary"><i
-                                        class="fas fa-angle-left"></i>&nbsp;<s:text name="department.remove.button.back"/> </a>
+                                        name="record.remove.button.remove"/></button>
+                                <a href="<s:url value="/record"/>" class="btn btn-secondary"><i
+                                        class="fas fa-angle-left"></i>&nbsp;<s:text name="record.remove.button.back"/> </a>
                             </div>
                         </s:form>
                     </div>

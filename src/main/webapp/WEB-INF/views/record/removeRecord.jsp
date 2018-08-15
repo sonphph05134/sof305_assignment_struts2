@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@include file="/WEB-INF/views/common/common.jsp"%>
-	<%@include file="/WEB-INF/views/common/head.jsp"%>
+    <%@include file="/WEB-INF/common/common.jsp"%>
+	<%@include file="/WEB-INF/common/head.jsp"%>
 </head>
 <body>
 	<section id="container">
-        <%@include file="/WEB-INF/views/common/navibars.jsp"%>
+        <%@include file="/WEB-INF/common/header.jsp"%>
         <div class="row">
              <!--Begin aside bar -->
              <div class="col-md-2" style="background-color: #34495e;">
@@ -36,40 +36,34 @@
 
                 <div class="container">
                     
-                    <h2><spring:message code="recordIndex.title"/></h2>
-                    
-                    <h3><spring:message code="recordRemove.title"/></h3>
+                    <h2><s:text name="recordIndex.title"/></h2>
+
+                    <h3><s:text name="recordRemove.title"/></h3>
                     <div class="form-group">&nbsp;</div>
             
                     <!-- BEGIN CREATE FORM -->
                     <div>
-						 <spring:url value="/record/removeRecord/${id}" var="formAction"></spring:url>
-				            <form:form action="${formAction}" method="POST" modelAttribute="recordRemoveForm">
-				
-				                <div class="form-group row">
-				                    <label for="code" class="col-sm-2 col-form-label"><strong><spring:message code="label.record.code"/>:</strong></label>
-				                    <div class="col-sm-10">
-				                        <form:input path="code" cssClass="form-control" cssErrorClass="form-control is-invalid" readonly="true"/>
-				                        <div class="invalid-feedback"><form:errors path="code"/></div>
-				                    </div>
-				                </div>
-				
-				                <div class="form-group row">
-				                    <label for="reason" class="col-sm-2 col-form-label"><strong><spring:message code="label.record.reason"/>:</strong></label>
-				                    <div class="col-sm-10">
-				                        <form:input path="reason" cssClass="form-control" cssErrorClass="form-control is-invalid"  readonly="true"/>
-				                        <div class="invalid-feedback"><form:errors path="reason"></form:errors></div>
-				                    </div>
-				                </div>
-				                
-				                <div class="form-group row">
-				                    <label for="name" class="col-sm-2 col-form-label"></label>
-				                    <div class="col-sm-10">
-				                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> <spring:message code="label.record.button.remove"/></button>
-				                        <a href="<spring:url value="/record"/>" class="btn btn-warning"><i class="fas fa-angle-left"></i> <spring:message code="label.record.button.back"/></a>
-				                    </div>
-				                </div>
-				            </form:form>
+						 	<s:form action="/record/removeProcessRecord?id=%{id}" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal">
+                                <s:hidden name="id" value="%{id}"/>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <s:textfield name="code"
+                                                     placeholder="code"
+                                                     readonly="true"/>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <s:textfield name="reason"
+                                                     placeholder="name"
+                                                     readonly="true"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-danger"><s:text
+                                            name="record.remove.button.remove"/></button>
+                                    <a href="<s:url value="/record"/>" class="btn btn-secondary"><i
+                                            class="fas fa-angle-left"></i>&nbsp;<s:text name="record.remove.button.back"/> </a>
+                                </div>
+				            </s:form>
                     </div>
                         <!-- END CREATE FORM -->
     

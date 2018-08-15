@@ -108,25 +108,30 @@
                                     <div>
 							            <s:form  action="/record/updateProcessRecord?=%{id}" method="POST" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal">
 							              <div class="row">
+                                              <div>
+                                                  <s:select list="listEmployeeDto"  listValue="name" listKey="employeeId" name="employeeId" theme="bootstrap" cssClass="form-control"
+
+                                                  />
+                                              </div>
+
                                                   <s:hidden name="id" value="%{id}"/>
 
-                                              <div class="form-row">
-                                                  <div class="form-group col-md-12">
-                                                      <s:textfield key="code"
-                                                                   placeholder="code"
-                                                                   id="code"
-                                                                   tooltip="Enter Record Code here"/>
-                                                  </div>
-                                                  <div class="form-group col-md-12">
-                                                      <s:textarea key="reason"
-                                                                   placeholder="reason"
-                                                                   id="reason"
-                                                                   tooltip="Enter Record reason here"/>
-                                                  </div>
 
+                                              <div class="form-row">
+
+                                                  <div class="form-group col-md-12">
+                                                      <s:textfield name="code" />
+                                                  </div>
+                                                  <div class="form-group col-md-12">
+                                                      <s:textarea name="reason"/>
+                                                  </div>
+                                                  <%--<div class="form-group col-md-12">--%>
+                                                      <%--<s:textfield name="employeeCode" />--%>
+                                                  <%--</div>--%>
                                               </div>
                                               <div class="row">
-                                                  <s:radio label="Type of Statistic " list="{'TT','KL','NONE'}" name="type"  theme="bootstrap" cssClass="form-horizontal mt-4"/>
+
+                                                  <s:radio list="{'TT','KL','NONE'}" name="type"  theme="bootstrap" />
                                               </div>
 
                                               <div class="col-sm-10">

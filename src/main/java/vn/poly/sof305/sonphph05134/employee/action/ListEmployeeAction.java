@@ -40,6 +40,7 @@ public class ListEmployeeAction extends ActionSupport implements ModelDriven<Lis
 
     private ListDataDto<EmployeeDto> listEmployee = new ListDataDto<>();
     private List<EmployeeDto> employeeDto;
+    private List<DepartmentDto> departmentDto;
     private ListPagingDto listPagingDto;
 
     private String code;
@@ -65,6 +66,7 @@ public class ListEmployeeAction extends ActionSupport implements ModelDriven<Lis
         } else {
             addActionMessage(getText("department.list.search.message.found") + "\t" + listPagingDto.getTotalRecords());
         }
+        departmentDto=employeeService.departments(null);
         return SUCCESS;
 
     }
@@ -137,5 +139,11 @@ public class ListEmployeeAction extends ActionSupport implements ModelDriven<Lis
         this.departmentId = departmentId;
     }
 
+    public List<DepartmentDto> getDepartmentDto() {
+        return departmentDto;
+    }
 
+    public void setDepartmentDto(List<DepartmentDto> departmentDto) {
+        this.departmentDto = departmentDto;
+    }
 }
