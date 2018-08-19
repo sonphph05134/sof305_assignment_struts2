@@ -43,17 +43,22 @@
             
                     <!-- BEGIN CREATE FORM -->
                     <div>
+
 						 	<s:form action="/record/removeProcessRecord?id=%{id}" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal">
+
+                                <h6><s:text name="record.title.remove.request" /></h6>
+
                                 <s:hidden name="id" value="%{id}"/>
+
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <s:textfield name="code"
-                                                     placeholder="code"
+                                                     key="record.label.code"
                                                      readonly="true"/>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <s:textfield name="reason"
-                                                     placeholder="name"
+                                                        key="record.label.reason"
                                                      readonly="true"/>
                                     </div>
                                 </div>

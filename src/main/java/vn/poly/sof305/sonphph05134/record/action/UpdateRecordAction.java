@@ -31,11 +31,6 @@ import java.util.regex.Pattern;
 public class UpdateRecordAction extends ActionSupport implements ModelDriven<RecordUpdateForm> {
 
     /*
-     * param: record ID
-     */
-    private Long id;
-
-    /*
      * param: recordService
      */
     private final RecordService recordService;
@@ -48,10 +43,18 @@ public class UpdateRecordAction extends ActionSupport implements ModelDriven<Rec
     private RecordUpdateForm recordUpdateForm = new RecordUpdateForm();
     private List<EmployeeDto> listEmployeeDto;
 
+    /*
+     * param: record ID
+     */
+    private Long id;
+    private Long employeeId;
+
     @Action("/updateRecord")
     public String execute() throws Exception {
-        listEmployeeDto= recordService.employees(null);
+        listEmployeeDto = recordService.employees(null);
+
         RecordDto recordDto = recordService.detail(id);
+
         DataTransformUtil.transform(recordDto, recordUpdateForm);
 
 
@@ -64,7 +67,6 @@ public class UpdateRecordAction extends ActionSupport implements ModelDriven<Rec
 
         // TODO Validation
 
-        listEmployeeDto= recordService.employees(null);
         RecordDto recordDto = (RecordDto) DataTransformUtil.transform(recordUpdateForm, RecordDto.class);
         recordDto.setId(id);
 
@@ -140,5 +142,13 @@ public class UpdateRecordAction extends ActionSupport implements ModelDriven<Rec
 
     public void setListEmployeeDto(List<EmployeeDto> listEmployeeDto) {
         this.listEmployeeDto = listEmployeeDto;
+    }
+
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 }

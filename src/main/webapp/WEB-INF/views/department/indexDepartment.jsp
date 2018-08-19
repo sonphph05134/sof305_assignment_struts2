@@ -63,9 +63,9 @@
                     <section class="wrapper">
                         <div >&nbsp; </div>
                         <div class="container">
-                            <h2>departmentIndex.title</h2>
+                            <h2><s:text name="departmentIndex.title"/></h2>
                             <div >&nbsp; </div>
-                            <h2>departmentIndex.title.label</h2>
+                            <h2><s:text name="departmentIndex.title.label"/></h2>
                             <div >&nbsp; </div>
                             <!-- Begin Search screen -->
                             <!-- BEGIN SEARCH FORM -->
@@ -86,17 +86,17 @@
                                 <s:hidden name="pn" value="%{pn}" id="pageNo"/>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <s:textfield key="code" cssClass="form-control" id="code"/>
+                                        <s:textfield key="department.label.CODE" cssClass="form-control" id="code"/>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <s:textfield key="name" cssClass="form-control" id="name"/>
+                                        <s:textfield key="department.label.NAME" cssClass="form-control" id="name"/>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary" id="btnSearch"><i class="fas fa-search"></i><s:text
-                                        name="department.list.search.button.search"/></button>
+                                        name="department.search.button"/></button>
                                 <%--   <s:submit key="button.search" value="Search" cssClass="btn btn-outline-primary"/>--%>
                                 <button type="submit" class="btn btn-warning" id="btnClear"><i class="fas fa-eraser"></i><s:text
-                                        name="department.list.search.button.clear"/></button>
+                                        name="department.clear.button"/></button>
 
                             </s:form>
 
@@ -110,7 +110,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <a href="${pageContext.request.contextPath}/department/createDepartment" class="btn btn-success">
-                                            <i class="fas fa-plus-square"></i> <s:text name="department.list.button.create"/>
+                                            <i class="fas fa-plus-square"></i> <s:text name="department.create.button"/>
                                         </a>
                                     </div>
                                 </div>
@@ -122,10 +122,10 @@
                                 <table class="table table-bordered table-hover">
                                     <thead class="thead-light">
                                     <tr>
-                                        <th><s:text name="No"/></th>
-                                        <th><s:text name="CODE"/></th>
-                                        <th><s:text name="NAME"/></th>
-                                        <th align="center"><s:text name="ACTION"/></th>
+                                        <th><s:text name="department.label.No"/></th>
+                                        <th><s:text name="department.label.CODE"/></th>
+                                        <th><s:text name="department.label.NAME"/></th>
+                                        <th align="center"><s:text name="department.label.ACTION"/></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -155,7 +155,7 @@
                                     <div class="col">
                                         <div class="col">
                                             <a href="${pageContext.request.contextPath}/department/createDepartment" class="btn btn-success">
-                                                <i class="fas fa-plus-square"></i> <s:text name="department.list.button.create"/>
+                                                <i class="fas fa-plus-square"></i> <s:text name="department.create.button"/>
                                             </a>
                                         </div>
                                     </div>

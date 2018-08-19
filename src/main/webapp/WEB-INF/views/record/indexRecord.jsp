@@ -45,9 +45,9 @@
                         <section class="wrapper">
                             <div >&nbsp; </div>
                             <div class="container">
-                                <h2>recordIndex.title</h2>
+                                <h2><s:text name="recordIndex.title"/></h2>
                                 <div >&nbsp; </div>
-                                <h2>recordIndex.title.label</h2>
+                                <h2><s:text name="recordIndex.title.label"/></h2>
                                 <div >&nbsp; </div>
                                 <!-- BEGIN TOP MESSAGE -->
                                 <div class="alert alert-heading alert-dismissible fade show font-weight-bold" role="alert">
@@ -73,20 +73,20 @@
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <s:textfield key="code" cssClass="form-control" id="code"/>
+                                                <s:textfield key="record.label.code" cssClass="form-control" id="code"/>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <s:textfield key="name" cssClass="form-control" id="name"/>
+                                                <s:textfield key="record.label.reason" cssClass="form-control" id="name"/>
                                             </div>
                                         </div>
 
                                         <button type="submit" class="btn btn-primary" id="btnSearch">
                                             <i class=" fas fa-search"></i>
-                                            <s:text name="record.list.search.button.search"/>
+                                            <s:text name="record.search.button"/>
                                         </button>
                                         <button type="submit" class="btn btn-warning" id="btnClear">
                                             <i class="fas fa-eraser"></i>
-                                            <s:text name="record.list.search.button.clear"/>
+                                            <s:text name="record.clear.button"/>
                                         </button>
                                     </s:form>
                                 </div>
@@ -100,19 +100,19 @@
                                         <div class="col">
                                             <a href="${pageContext.request.contextPath}/record/createRecord" class="btn btn-success">
                                                 <i class="fas fa-plus-square"></i>
-                                                <s:text name="record.button.create" />
+                                                <s:text name="record.create.button" />
                                             </a>
-                                        </div>>
+                                        </div>
                                     </div>
                                     <table class="table table-bordered table-hover" >
                                         <thead class="thead-light">
                                         <tr>
-                                            <th><s:text name="no"/></th>
-                                            <th><s:text name="code"/></th>
-                                            <th><s:text name="type"/></th>
-                                            <th><s:text name="reason"/></th>
-                                            <th><s:text name="employeeName"/></th>
-                                            <th align="center"><s:text name="action"/></th>
+                                            <th><s:text name="record.label.no"/></th>
+                                            <th><s:text name="record.label.code"/></th>
+                                            <th><s:text name="record.label.type"/></th>
+                                            <th><s:text name="record.label.reason"/></th>
+                                            <th><s:text name="record.label.employeeName"/></th>
+                                            <th align="center"><s:text name="record.label.action"/></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -143,7 +143,7 @@
                                         <div class="col">
                                             <a href="#" class="btn btn-success">
                                                 <i class="fas fa-plus-square"></i>
-                                                <s:text name="record.button.create"/>
+                                                <s:text name="record.create.button" />
                                             </a>
                                         </div>
                                     </div>

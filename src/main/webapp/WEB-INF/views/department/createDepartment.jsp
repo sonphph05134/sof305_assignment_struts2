@@ -38,9 +38,9 @@
 
                 <div class="container">
 
-                    <h2>departmentIndex.title</h2>
+                    <h2><s:text name="departmentIndex.title"/></h2>
                     <div >&nbsp; </div>
-                    <h2>departmentIndex.title.label</h2>
+                    <h2><s:text name="departmentIndex.title.create.department"/></h2>
                     <div >&nbsp; </div>
             
                     <!-- BEGIN CREATE FORM -->
@@ -66,9 +66,9 @@
                             </div>
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-primary"><s:text
-                                        name="department.create.button.create"/></button>
+                                        name="department.create.button"/></button>
                                 <a href="<s:url value="/department"/>" class="btn btn-secondary"><i
-                                        class="fas fa-angle-left"></i>&nbsp;<s:text name="department.create.button.back"/> </a>
+                                        class="fas fa-angle-left"></i>&nbsp;<s:text name="department.back.button"/> </a>
                             </div>
                         </s:form>
 

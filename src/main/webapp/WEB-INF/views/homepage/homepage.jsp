@@ -39,9 +39,9 @@
 
                         <div class="container">
                             <div class="">&nbsp;</div>
-                            <h2>homepage.title</h2>
+                            <h2><s:text name="homepage.title"/></h2>
                             <br>
-                            <h2>homepage.top.label</h2>
+                            <h2><s:text name="homepage.top.label"/></h2>
                             <div class="">&nbsp;</div>
 
                             <!-- Begin List screen -->

@@ -46,6 +46,7 @@ public class RemoveRecordAction extends ActionSupport implements ModelDriven<Rec
     private RecordRemoveForm recordRemoveForm = new RecordRemoveForm();
     private RecordDto RecordDto;
 
+
     @Action("/removeRecord")
     public String execute() throws Exception{
         //get data
@@ -56,7 +57,9 @@ public class RemoveRecordAction extends ActionSupport implements ModelDriven<Rec
 
     @Action("/removeProcessRecord")
     public String doRemove() throws Exception {
-        // TODO Validation
+        // TODO
+        RecordDto recordDto = recordService.detail(id);
+        DataTransformUtil.transform(recordDto, recordRemoveForm);
         recordService.remove(id);
         return SUCCESS;
     }

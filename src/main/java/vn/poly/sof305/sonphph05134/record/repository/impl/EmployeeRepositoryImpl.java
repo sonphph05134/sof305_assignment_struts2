@@ -2,6 +2,7 @@ package vn.poly.sof305.sonphph05134.record.repository.impl;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
@@ -27,8 +28,6 @@ public class EmployeeRepositoryImpl extends BaseRepository implements EmployeeRe
 
         StringBuilder queryStb = new StringBuilder("from Employee where delFlg = :delFlg");
 
-        // TODO
-
         // Add order conditional
         queryStb.append(" order by code");
 
@@ -37,8 +36,6 @@ public class EmployeeRepositoryImpl extends BaseRepository implements EmployeeRe
 
         // Set delFlg parameter
         query.setParameter("delFlg", Employee.DelFlg.UNDELETED);
-
-        // TODO
 
         return query.list();
     }

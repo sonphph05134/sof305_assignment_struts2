@@ -34,10 +34,10 @@
                  <div class="form-group">&nbsp;</div>
 
                 <div class="container">
-                    
-                    <h1><spring:message code="homepageIndex.department"/> </h1>
-                    
-                    <h3><spring:message code="label.department.removeSceen"/></h3>
+
+                    <h2><s:text name="departmentIndex.title"/></h2>
+
+                    <h2><s:text name="departmentIndex.title.remove.department"/></h2>
                     <div class="form-group">&nbsp;</div>
             
                     <!-- BEGIN CREATE FORM -->
@@ -60,9 +60,9 @@
                             </div>
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-danger"><s:text
-                                        name="record.remove.button.remove"/></button>
-                                <a href="<s:url value="/record"/>" class="btn btn-secondary"><i
-                                        class="fas fa-angle-left"></i>&nbsp;<s:text name="record.remove.button.back"/> </a>
+                                        name="department.remove.button"/></button>
+                                <a href="<s:url value="/department"/>" class="btn btn-secondary"><i
+                                        class="fas fa-angle-left"></i>&nbsp;<s:text name="department.back.button"/> </a>
                             </div>
                         </s:form>
                     </div>

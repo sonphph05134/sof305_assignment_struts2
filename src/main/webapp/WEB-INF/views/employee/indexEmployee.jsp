@@ -46,9 +46,9 @@
                     <section class="wrapper">
                         <div >&nbsp; </div>
                         <div class="container">
-                            <h2>employeeIndex.title</h2>
+                            <h2><s:text name="employeeIndex.title"/> </h2>
                             <div >&nbsp; </div>
-                            <h2>employeeIndex.title.label</h2>
+                            <h2><s:text name="employeeIndex.title.label"/></h2>
                             <div >&nbsp; </div>
                             <!-- Begin Top Message -->
 
@@ -68,19 +68,23 @@
                                                     id="departmentId"/>
                                                 </div>
                                                 <s:hidden name="pn" value="%{pn}" id="pageNo"/>
-                                                <div class="form-row">
+                                                <div class="form-group">
                                                     <div class="form-group col-md-6">
-                                                        <s:textfield key="code" cssClass="form-control" id="code"/>
+                                                        <s:textfield key="employee.label.search.code" cssClass="form-row" id="code" cssStyle="width: 800px"/>
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <s:textfield key="name" cssClass="form-control" id="name"/>
+                                                        <s:textfield key="employee.label.search.name" cssClass="form-group" id="name" cssStyle="width: 800px"/>
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary" id="btnSearch"><i class="
-                                                fas fa-search"></i><s:text name="department.list.search.button.search"/></button>
+                                                <button type="submit" class="btn btn-primary" id="btnSearch">
+                                                    <i class="fas fa-search"></i>
+                                                    <s:text name="employee.search.button"/>
+                                                </button>
                                                 <%--   <s:submit key="button.search" value="Search" cssClass="btn btn-outline-primary"/>--%>
-                                                <button type="submit" class="btn btn-warning" id="btnClear"><i class="fas fa-eraser"></i><s:text
-                                                        name="department.list.search.button.clear"/></button>
+                                                <button type="submit" class="btn btn-warning" id="btnClear">
+                                                    <i class="fas fa-eraser"></i>
+                                                    <s:text name="employee.clear.button"/>
+                                                </button>
                                             </s:form>
                                         </div>
 
@@ -88,7 +92,7 @@
                             </div>
                             <!-- End Search screen -->
 
-                            <div class="form-group">&nbsp;</div>
+                            <div>&nbsp;</div>
 
                             <!-- Begin List screen -->
                             <div>
@@ -96,20 +100,23 @@
                                     <div class="col">
                                         <a href="${pageContext.request.contextPath}/employee/createEmployee" class="btn btn-success">
                                             <i class="fas fa-plus-square"></i>
-                                            Create
+                                            <s:text name="employee.create.button"/>
                                         </a>
-                                    </div>>
+                                    </div>
                                 </div>
+                                <div>&nbsp;</div>
                                 <table class="table table-bordered table-hover" >
                                     <thead class="thead-light">
                                     <tr>
-                                        <th><s:text name="no"/></th>
-                                        <th><s:text name="code"/></th>
-                                        <th><s:text name="name"/></th>
-                                        <th><s:text name="gender"/></th>
-                                        <th><s:text name="departmentName"/></th>
-                                        <th align="center"><s:text name="photo"/></th>
-                                        <th align="center"><s:text name="action"/></th>
+                                        <th><s:text name="employee.title.No"/></th>
+                                        <th><s:text name="employee.title.CODE"/></th>
+                                        <th><s:text name="employee.title.NAME"/></th>
+                                        <th><s:text name="employee.title.IMAGE"/></th>
+                                        <th><s:text name="employee.title.DEPARTMENTNAME"/></th>
+                                        <th><s:text name="employee.title.GENDER"/></th>
+                                        <th width="150px" ><s:text name="employee.title.BIRTHDAY" /></th>
+                                        <th align="center"><s:text name="employee.title.SALARY"/></th>
+                                        <th align="center"><s:text name="employee.title.ACTION"/></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -120,19 +127,21 @@
                                             <td>${loop.count}</td>
                                             <td><s:property value="code"/></td>
                                             <td><s:property value="name"/></td>
-                                            <td><s:property value="gender"/></td>
-                                            <td><s:property value="departmentName"/></td>
-                                            <td align="center">
+                                            <td align="center" style="width: 200px">
                                                     <%--FIXME--%>
-                                                        <s:if test="photo != null">
-                                                            <img src="${pageContext.request.contextPath}/uploads/<s:property value="photo"/>" width="20%"/>
-                                                        </s:if>
-                                                        <s:else >
-                                                            <img src="/uploads/default-user-image.jpg" width="20%"/>
-                                                        </s:else>
+                                                <s:if test="photo != null">
+                                                    <img src="${pageContext.request.contextPath}/uploads/<s:property value="photo"/>" width="30%"/>
+                                                </s:if>
+                                                <s:else >
+                                                    <img src="/uploads/default-user-image.jpg" width="20%"/>
+                                                </s:else>
 
                                             </td>
-                                            <td align="center">
+                                            <td><s:property value="departmentName"/></td>
+                                            <td><s:property value="gender"/></td>
+                                            <td><s:property value="birthday"/></td>
+                                            <td><s:property value="salary"/></td>
+                                            <td align="center"style="width: 200px" >
                                                 <a href="<s:url value="employee/update">
                                                     <s:param name="id" value="%{id}"/>
                                                 </s:url> " class="btn btn-outline-success">
@@ -158,9 +167,9 @@
                                     <div class="col">
                                         <a href="${pageContext.request.contextPath}/employee/createEmployee" class="btn btn-success">
                                             <i class="fas fa-plus-square"></i>
-                                            Create
+                                            <s:text name="employee.create.button"/>
                                         </a>
-                                    </div>>
+                                    </div>
                                 </div>
                             </div>
                             <!-- End List screen -->

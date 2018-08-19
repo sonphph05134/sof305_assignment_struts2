@@ -25,6 +25,9 @@
             font-size: large;
             font-weight: lighter;
         }
+        .text-center text-danger mb-2{
+            color: red;
+        }
     </style>
 </head>
 <body >
@@ -72,9 +75,9 @@
                                 <div class="col-md-6 col-md-offset-3">
 
                                     <s:if test="hasActionErrors()">
-                                        <s:actionerror cssClass="text-center text-danger mb-2"/>
+                                        <s:actionerror cssClass="text-center text-danger mb-2"  />
                                     </s:if>
-                                    <s:submit  key ="login.button" value="Login"  />
+                                    <s:submit key="login.button.submit"  />
                                 </div>
                             </s:form>
                         </div>

@@ -99,10 +99,10 @@
 	                                <div >&nbsp; </div>
 	                                <div class="container">
 	                                
-	                                    <h2><spring:message code="recordIndex.title"/></h2> 
+	                                    <h2><s:text name="recordIndex.title"/></h2>
 	                                    
 	                                    <div>&nbsp;</div>
-	                                    <h2><spring:message code="recordCreate.title"/></h2>
+	                                    <h2><s:text name="recordCreate.title"/></h2>
 	                                    
 	                                    <!-- Begin Create screen -->
 	                                    <div>
@@ -111,39 +111,64 @@
 	                                            <div class="col">
 	                                                <div class="form-group">
 	                                                	<div class="form-group">
-
+															<h6><s:text name="record.dropdown.employee.name"/> </h6>
 															<div>
 															<s:select list="listEmployeeDto" listValue="name" listKey="id" name="employeeId" theme="bootstrap" cssClass="form-control"
 																	  emptyOption="true" headerKey="-1" headerValue="-------------------------------------------------     Employee List    ---------------------------------------------------"
 																	 />
 														</div>
 	                                                </div>
-                                                        <s:radio label="Type of Statistic " list="{'TT','KL','NONE'}" name="type"  theme="bootstrap" cssClass="form-horizontal mt-4"/>
-														<div class="form-row">
+														<div class="row ">
 															<div class="form-group col-md-12">
-																<s:textfield key="code"
-																			 placeholder="code"
-																			 id="code"
-																			 tooltip="Enter Record Code here"/>
+																<s:textfield name="code" key="record.label.code"/>
 															</div>
-
 															<div class="form-group col-md-12">
-																<s:textarea key="reason"
-																			 placeholder="reason"
-																			 id="name"
-																			 tooltip="Enter Record reason here"/>
+																<s:textarea name="reason" key="record.label.reason"/>
 															</div>
+														</div>
+														<div class="col-md-offset-2">
+															<h6><s:text name="record.radion.type.name"/> </h6>
+														</div>
+														<div class="row offset-1">
+															<s:set var="listType" value="%{listEmployeeDto.type}"/>
+															<s:if test="listType==TT">
+																<s:radio list="{'TT'}" name="type"  theme="simple" cssStyle="column-width: 100px"/>
+															</s:if>
+															<s:if test="listType==KL">
+																<s:radio list="{'KL'}" name="type" theme="simple" cssStyle="column-width: 100px"  />
+															</s:if>
+															<s:if test="listType==TT">
+																<s:radio list="{'NONE'}" name="type"  theme="simple" cssStyle="column-width: 100px"/>
+															</s:if>
 
-	                                                <div class="form-group">
-														<%--<s:checkbox name="checkMe" fieldValue="true" value="true" label="Check Me for testing"/>--%>
+																<%--<s:radio list="{'TT','KL','NONE'}" name="type"  theme="simple" cssStyle="column-width: 100px" />--%>
+														</div>
+                                                        <%--<s:radio label="Type of Statistic " list="{'TT','KL','NONE'}" name="type"  theme="bootstrap" cssClass="form-horizontal mt-4"/>--%>
+														<%--<div class="form-row">--%>
+															<%--<div class="form-group col-md-12">--%>
+																<%--<s:textfield key="code"--%>
+																			 <%--placeholder="code"--%>
+																			 <%--id="code"--%>
+																			 <%--tooltip="Enter Record Code here"/>--%>
+															<%--</div>--%>
+
+															<%--<div class="form-group col-md-12">--%>
+																<%--<s:textarea key="reason"--%>
+																			 <%--placeholder="reason"--%>
+																			 <%--id="name"--%>
+																			 <%--tooltip="Enter Record reason here"/>--%>
+															<%--</div>--%>
+
+	                                                <%--<div class="form-group">--%>
+														<%--&lt;%&ndash;<s:checkbox name="checkMe" fieldValue="true" value="true" label="Check Me for testing"/>&ndash;%&gt;--%>
 
 
-													 </div>
+													 <%--</div>--%>
 															<div class="col-sm-10">
 																<button type="submit" class="btn btn-primary"><s:text
-																		name="record.create.button.create"/></button>
+																		name="record.create.button"/></button>
 																<a href="<s:url value="/record"/>" class="btn btn-secondary"><i
-																		class="fas fa-angle-left"></i>&nbsp;<s:text name="record.create.button.back"/> </a>
+																		class="fas fa-angle-left"></i>&nbsp;<s:text name="record.back.button"/> </a>
 															</div>
 								            </s:form>
 								        </div>

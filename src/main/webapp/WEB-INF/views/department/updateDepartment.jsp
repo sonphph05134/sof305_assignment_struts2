@@ -34,10 +34,10 @@
                  <div class="form-group">&nbsp;</div>
 
                 <div class="container">
-                    
-                    <h1><s:label code="homepageIndex.department"/></h1>
-                    
-                    <h1><small><s:label code="label.department.updateScreen"/></small></h1>
+
+                    <h2><s:text name="departmentIndex.title"/></h2>
+
+                    <h2><s:text name="departmentIndex.title.update.department"/></h2>
                     <div class="form-group">&nbsp;</div>
             
                     <!-- BEGIN UPdate FORM -->
@@ -62,9 +62,9 @@
 
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-warning"><s:text
-                                        name="department.update.button.update"/></button>
+                                        name="department.update.button"/></button>
                                 <a href="<s:url value="/department"/>" class="btn btn-secondary"><i
-                                        class="fas fa-angle-left"></i>&nbsp;<s:text name="department.update.button.back"/> </a>
+                                        class="fas fa-angle-left"></i>&nbsp;<s:text name="department.back.button"/> </a>
                             </div>
                         </s:form>
                     </div>
